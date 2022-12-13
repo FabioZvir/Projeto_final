@@ -1,0 +1,306 @@
+/* Gerais */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+header {
+    height: 90px;  
+    background-color: white;
+    box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+
+.list-header {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 20px;
+    align-items: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 40px;
+}
+
+.flex-nav{
+    margin: 40px 10px 0px 10px;
+}
+
+.nav-links {
+    color: black;
+    opacity: .6;
+}
+
+.nav-links:hover{
+    opacity: .8;
+}
+
+.active {
+    opacity: 1;
+}
+
+.usuario {
+    margin: -20px 10px 0px 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: .6;
+    color: black;
+    padding-right: 10px;
+
+}
+
+/* Main */
+
+.principal-section {
+    width: 863px;
+    height: 60vh;
+    margin: 0 auto;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/* Input */
+.custom-field {
+    position: relative;
+    font-size: 20px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom-field > input {
+    border: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 3px 0px 0px 3px;
+    width: 800px;
+    outline: none;
+    font-size: 20px;
+}
+
+.custom-field .placeholder {
+    position: absolute;
+    left: 12px;
+    top: calc(50% + 10px);
+    transform: translateY(-50%);
+    color: #aaa;
+    transition: 
+    top 0.3s ease,
+    font-size 0.3s ease,
+    color 0.3s ease;
+}
+
+.custom-field > input:focus,
+.custom-field > input:valid {
+    box-shadow: inset 3px 3px 0px #059de4,
+                inset -3px -3px 0px #059de4;
+}
+
+.custom-field > input:valid + .placeholder,
+.custom-field > input:focus + .placeholder {
+    top: -10px;
+    font-size: 14px;
+}
+
+/* Button */
+
+.model-button {
+    position: relative;
+    height: 63px;
+    width: 63px;
+
+    border-width: 0px;
+}
+
+.search-aluno {
+    background-color: #059de4;
+    right: 0px;
+}
+
+.search-aluno:hover {
+    background-color: #24d3ff;
+}
+
+.plus {
+    background-color: #1fc250;
+
+}
+
+.plus:hover {
+    background-color: #38ec6e;
+}
+
+/* Cadastrar */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.wrapper {
+    margin: 70px auto;
+    padding: 20px;
+    background: #e7e7e7;
+    border-radius: 5px;
+    width: 25%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.wrapper h2 {
+    padding: 10px 10px;
+    color: #324960;
+    font-size: 32px;
+}
+
+.wrapper .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #24d3ff;
+}
+
+.wrapper .content {
+    max-width: 95% ;
+    padding-left: 10px;
+    overflow: auto;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    padding: 20px 0;
+}
+
+form label {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+input[type=text], input[type=number], select{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 25px;
+    resize: vertical;
+    font-family: sans-serif;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
+}
+
+input[type="submit"] {
+    background-color: #24d3ff;
+    color: #fff;
+    padding: 15px 50px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+
+input[type="submit"]:hover {
+    background-color: #8ee8ff;
+}
+
+/* TABLE */
+.table-aluno {
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 101%;
+    white-space: nowrap;
+    margin-top: 35px;
+    background-color: white;
+    z-index: -2;
+}
+
+.table-aluno td, .table-aluno th {
+    text-align: center;
+    padding: 20px;
+}
+
+.table-aluno td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 17px;
+    
+}
+
+.table-aluno thead th {
+    color: #ffffff;
+    background: #4f6ac3;
+}
+
+.table-aluno thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #6b9aca;
+}
+
+.table-aluno tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+/* Button Lixeira */
+
+.btn {
+
+    border-radius: 6px;
+    color: #fff;
+    padding: 13px;
+    margin-left: 5px;
+    font-size: 18px;
+}

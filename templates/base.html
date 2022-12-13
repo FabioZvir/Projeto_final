@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+   
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="list-header">
+                <li class="flex-nav">
+                    <a class="nav-links active" href="/">Alunos</a>
+                </li>
+                <li class="flex-nav">
+                    <a class="nav-links" href="cursos">Cursos</a>
+                </li>
+                <li class="flex-nav">
+                    <a class="nav-links" href="professores">Professores</a>
+                </li>
+            </ul>
+            <!-- <a class="usuario" href="">Fabio Ricardo Zvir Junior.Zvir</a> -->
+        </nav>
+    </header>
+    {% block conteudo %}
+    {% endblock%}
+    
+</body>
+</html>

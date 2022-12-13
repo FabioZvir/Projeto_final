@@ -1,0 +1,118 @@
+{% extends 'base.html '%}
+
+{% block conteudo%}
+ <main>
+    <section class="principal-section">
+        <label class="custom-field">
+            <a href="#curso-overlay">
+                <button class="model-button plus">
+                    <i class="fa fa-plus icon-search" style="font-size:20px; color:#fff"></i>
+                </button>
+            </a>
+    </label>
+ <div class="overlay" id="curso-overlay">
+    <div class="wrapper">
+      <h2>Cadastrar Aluno</h2>
+      <a href="#" class="close"> &times;</a>
+      <div class="content">
+        <div class="container">
+          <form action="/cadastrar/cursos" method="POST">
+            <label for="nome-curso">Nome do Curso</label>
+            <input
+              type="text"
+              id="nome-curso"
+              name="nome-curso"
+              placeholder="Digite o Curso"
+            />
+            <label for="duracao">Duracao</label>
+            <input
+              type="number"
+              id="duracao"
+              name="duracao"
+              placeholder="Digite a duração"
+            />
+            <label for="id-curso">Id Curso</label>
+            <input
+              type="number"
+              id="id-curso"
+              name="id-curso"
+              placeholder="Digite o id"
+            />
+            <input type="submit" value="Cadastrar" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% if curso != undefined %}
+    <div class="overlay active" id="curso-overlay">
+      <div class="wrapper">
+        <h2>Atualizar Curso</h2>
+        <a href="#" class="close"> &times;</a>
+        <div class="content">
+          <div class="container">
+            <form action="{{curso[0]['idCurso']}}" method="POST">
+              <label for="nome-curso">Nome do Curso</label>
+              <input
+                type="text"
+                id="nome-curso"
+                name="nome-curso"
+                value="{{curso[0]['nomeCurso']}}"
+                placeholder="Digite o Curso"
+              />
+              <label for="duracao">Duracao</label>
+              <input
+                type="number"
+                id="duracao"
+                name="duracao"
+                value="{{curso[0]['duracao']}}"
+                placeholder="Digite a duração"
+              />
+              <label for="id-curso">Id Curso</label>
+              <input
+                type="number"
+                id="id-curso"
+                name="id-curso"
+                value="{{curso[0]['idCurso']}}"
+                placeholder="Digite o id"
+              />
+              <input type="submit" value="Cadastrar" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endif %}
+
+  <table class="table-aluno">
+    <thead>
+        <tr>
+            <th>Nome curso</th>
+            <th>id Curso</th>
+            <th>Duração</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cursos %}
+        <tr>
+            <td>{{item["nomeCurso"]}}</td>
+            <td>{{item["idCurso"]}}</td>
+            <td>{{item["duracao"]}}</td>
+            <td><a class="btn" style="background-color: rgb(70, 70, 70);" href='/cursoDel/{{item["idCurso"]}}'>
+                    <i class="bi bi-trash"> </i>
+                    Deletar
+                </a>
+                <a href='/atualizando/{{item["idCurso"]}}'class="btn" style="background-color: rgb(247, 27, 27);">
+                  <i class="bi bi-arrow-clockwise"> </i>Atualizar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+  </section>
+</main>
+{% endblock%}
+

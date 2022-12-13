@@ -1,0 +1,100 @@
+{% extends 'base.html '%}
+
+{% block conteudo%}
+    <main>
+        <section class="principal-section">
+                <a href="#cadastro-overlay">
+                    <button class="model-button plus">
+                        <i class="fa fa-plus icon-search" style="font-size:20px; color:#fff"></i>
+                    </button>
+                </a>
+
+                <div class="overlay" id="cadastro-overlay">
+                    <div class="wrapper">
+                        <h2>Cadastrar Aluno</h2>
+                        <a href="#" class="close"> &times;</a>
+                        <div class="content">
+                            <div class="container">
+                                <form action="cadastrar" method="POST">
+                                    <label for="nome-aluno">Nome</label>
+                                    <input type="text" id="nome-aluno" name="nome-aluno" placeholder="Digite nome">
+                                    <label for="matricula">Matricula</label>
+                                    <input type="number" id="matricula" name="matricula" placeholder="Digite a matricula">
+                                    <label for="cpf">CPF</label>
+                                    <input type="number" id="cpf" name="cpf" placeholder="Digite o CPF do aluno">
+                                    <label for="curso">Curso</label>
+                                    <select name="curso" id="curso">
+                                        <option selected disabled> Escolha seu curso</option>
+                                        {% for item in cursos %}
+                                            <option id="curso" name="curso" value="{{item['nomeCurso']}}">{{item["nomeCurso"]}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <input type="submit" value="Cadastrar">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if pessoa != undefined %}
+                <div class="overlay active" id="atualizar-overlay">
+                    <div class="wrapper">
+                        <h2>Atualizar Alunos</h2>
+                        <a href="#" class="close"> &times;</a>
+                        <div class="content">
+                            <div class="container">
+                                <form action="{{pessoa[0]['cpf']}}" method="POST">
+                                    <label for="nome-aluno">Nome</label>
+                                    <input type="text" id="nome-aluno" name="nome-aluno" value="{{pessoa[0]['nome']}}"  placeholder="Digite nome">
+                                    <label for="matricula">Matricula</label>
+                                    <input type="number" id="matricula" name="matricula" value="{{pessoa[0]['matricula']}}"  placeholder="Digite a matricula">
+                                    <label for="cpf">CPF</label>
+                                    <input type="number" id="cpf" name="cpf" value='{{pessoa[0]["CPF"]}}' placeholder="Digite o CPF do aluno">
+                                    <label for="curso">Curso</label>
+                                    <select name="curso" id="curso">
+                                        <option selected> {{pessoa[0]["curso"]}}</option>
+                                        {% for item in result %}
+                                            <option id="curso" name="curso" value="{{pessoa[0]['curso']}}">{{pessoa[0]["curso"]}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <input type="submit" value="Atualizar">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </label>
+            <table class="table-aluno">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Matricula</th>
+                        <th>CPF</th>
+                        <th>Curso</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in result %}
+                    <tr>
+                        <td>{{item["nome"]}}</td>
+                        <td>{{item["matricula"]}}</td>
+                        <td>{{item["CPF"]}}</td>
+                        <td>{{item["curso"]}}</td>
+                        <td><a class="btn" style="background-color: rgb(70, 70, 70);" href='/deletar/{{item["CPF"]}}'>
+                                <i class="bi bi-trash"> </i>
+                                Deletar 
+                            </a>
+                            <a href='/atualizar/{{item["CPF"]}}'class="btn" style="background-color: rgb(247, 27, 27);">
+                              <i class="bi bi-arrow-clockwise"> </i>Atualizar
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+{% endblock%}
